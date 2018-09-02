@@ -1,0 +1,80 @@
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+.idea
+!.gitkeep
+
+
+# ======================
+# Monodevelop generated
+# ======================
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+*.apk
+
+# ======================
+# Unity generated
+# ======================
+GameData/
+Library/
+Temp/
+obj/
+eclipse/
+xcode/
+No Name*.*
+
+# ======================
+# VisualStudio generated
+# ======================
+[Bb]in/
+.vs/
+
+# ======================
+# VSCode generated
+# ======================
+.vscode/
+
+# ======================
+# JetBrains generated
+# ======================
+Assets/Plugins/Editor/JetBrains*
+
+# ======================
+# Xcode generated
+# ======================
+*/build/*
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+xcshareddata
+profile
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+
+# ======================
+# Stylecop
+# ======================
+Assets/StyleCop.Cache
+Assets/StyleCop.Cache.meta
+StyleCopViolations.xml
+
+# ======================
+# Other
+# ======================
+empty.meta
