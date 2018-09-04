@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace RayTrance
+namespace RayTrace
 {
 	public class Ray
 	{

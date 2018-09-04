@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 
-namespace RayTrance
+namespace RayTrace
 {
 	public class Sphere : IHitable
 	{
 		public Vector3 Center { get; private set; }
 		public float Radius { get; private set; }
-		public Sphere(Vector3 center, float radius)
+        public IMaterial Material { get; private set; }
+
+		public Sphere(Vector3 center, float radius, IMaterial material)
 		{
 			Center = center;
 			Radius = radius;
+            Material = material;
 		}
 
 		public bool Hit(Ray ray, float min, float max, ref HitRecord rec)
@@ -27,6 +30,7 @@ namespace RayTrance
 					rec.Root = r;
 					rec.Point = ray.GetPoint(r);
 					rec.Normal = (rec.Point - Center).normalized;
+                    rec.Material = Material;
 					return true;
 				}
 
@@ -36,7 +40,8 @@ namespace RayTrance
 					rec.Root = r;
 					rec.Point = ray.GetPoint(r);
 					rec.Normal = (rec.Point - Center).normalized;
-					return true;
+                    rec.Material = Material;
+                    return true;
 				}
 			}
 

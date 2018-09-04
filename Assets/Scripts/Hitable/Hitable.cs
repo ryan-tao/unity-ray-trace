@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RayTrance
+namespace RayTrace
 {
 	public interface IHitable
 	{

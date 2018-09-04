@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace RayTrance
+namespace RayTrace
 {
 	public class RayTrace : MonoBehaviour
 	{
@@ -16,7 +16,7 @@ namespace RayTrance
 		void Start()
 		{
 			texture = new Texture2D(width, height, TextureFormat.ARGB32, false);
-			texture.SetPixels(HitSphere.CreateColorFromHitRecord(width, height));
+			texture.SetPixels(HitMetalSphere.CreateColorFromHitRecord(width, height));
 			texture.Apply();
 
 			image.texture = texture;
