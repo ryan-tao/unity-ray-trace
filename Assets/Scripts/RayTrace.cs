@@ -16,7 +16,7 @@ namespace RayTrace
 		void Start()
 		{
 			texture = new Texture2D(width, height, TextureFormat.ARGB32, false);
-			texture.SetPixels(HitMetalSphere.CreateColorFromHitRecord(width, height));
+			texture.SetPixels(HitSphere.CreateColorFromHitRecord(width, height));
 			texture.Apply();
 
 			image.texture = texture;
