@@ -36,7 +36,7 @@ namespace RayTrace
 			hitableList.List.Add(new Sphere(new Vector3(0, 0, -1), 0.5f, new Lambertian(new Color(0.8f, 0.3f, 0.3f))));
 			hitableList.List.Add(new Sphere(new Vector3(0, -100.5f, -1), 100f, new Lambertian(new Color(0.8f, 0.8f, 0f))));
             hitableList.List.Add(new Sphere(new Vector3(1, 0, -1f), 0.5f, new Metal(new Color(0.8f, 0.6f, 0.2f))));
-            hitableList.List.Add(new Sphere(new Vector3(-1, 0, -1f), 0.5f, new Dielectirc(1.5f)));
+            hitableList.List.Add(new Sphere(new Vector3(-1, 0, -1f), 0.5f, new Dielectirc(1.2f)));
 
             for (int j = height - 1; j >= 0; j--)
 			{
