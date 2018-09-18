@@ -16,29 +16,43 @@ namespace RayTrace
             Vector3 outwardNormal;
             attenuation = Color.white;
             var eta = 0f;
-            if (Vector3.Dot(rayIn.NormalizedDirection, record.Normal) > 0)
+            var cosi = 0f;
+            var reflectProb = 0f;
+            var dotDN = Vector3.Dot(rayIn.NormalizedDirection, record.Normal);
+            if ( dotDN > 0)
             {
                 outwardNormal = -record.Normal;
                 eta = this.eta;
+                cosi = eta * dotDN;
             }
             else
             {
                 outwardNormal = record.Normal;
                 eta = 1f / this.eta;
+                cosi = -dotDN;
             }
 
             var refracted = Vector3.zero;
             if (RayTraceUtility.Refract(rayIn.NormalizedDirection, outwardNormal, eta, ref refracted))
             {
-                scatteredRay = new Ray(record.Point, refracted);
-                return true;
+                reflectProb = RayTraceUtility.Schlick(cosi, eta);
             }
             else
             {
+                reflectProb = 1f;
+            }
+
+            if (Random.Range(0f, 1f) <= reflectProb)
+            {
                 var reflected = RayTraceUtility.Reflect(rayIn.NormalizedDirection, record.Normal);
                 scatteredRay = new Ray(record.Point, reflected);
-                return false;
             }
+            else
+            {
+                scatteredRay = new Ray(record.Point, refracted);
+            }
+
+            return true;
         }
     }
 }

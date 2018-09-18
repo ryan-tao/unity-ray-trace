@@ -31,5 +31,12 @@ namespace RayTrace
             vectorOut = eta * vectorIn - a * normal;
             return true;
         }
+
+        public static float Schlick(float cosi, float eta)
+        {
+            var r0 = (eta - 1f) / (eta + 1);
+            r0 *= r0;
+            return r0 + (1f - r0) * Mathf.Pow(1 - cosi, 5f);
+        }
     }
 }
