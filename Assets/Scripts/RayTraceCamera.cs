@@ -31,11 +31,6 @@ namespace RayTrace
 
         public Ray GetRay(float s, float t)
         {
-            if (lensRadius == 0f)
-            {
-                return new Ray(Position, LowerLeft + s * Horizontal + t * Vertical - Position);
-            }
-
             var lensPos = lensRadius * RayTraceUtility.GetRandomPointInUnitDisk();
             var offset = lensPos.x * u + lensPos.y * v;
             return new Ray(Position + offset, LowerLeft + s * Horizontal + t * Vertical - Position - offset);
