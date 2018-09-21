@@ -30,7 +30,11 @@ namespace RayTrace
 
         public static Color[] CreateColorFromHitRecord(int width, int height)
         {
-            var camera = new RayTraceCamera(new Vector3(-2f, 1f, -1f), new Vector3(-1f, 0f, -1f), Vector3.up, 90f, 2f);
+            var camPos = new Vector3(3f, 3f, 2f);
+            var camLookAt = new Vector3(0f, 0f, -1f);
+            var focusDist = (camLookAt - camPos).magnitude;
+            var camera = new RayTraceCamera(camPos, camLookAt, Vector3.up, 30f, 2f, 2f, focusDist);
+
             var colors = new Color[width * height];
             var hitableList = new HitableList();
             hitableList.List.Add(new Sphere(new Vector3(0, 0, -1), 0.5f, new Lambertian(new Color(0.8f, 0.3f, 0.3f))));
