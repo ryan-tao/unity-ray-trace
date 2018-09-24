@@ -18,22 +18,21 @@ namespace RayTrace
             var eta = 0f;
             var cosi = 0f;
             var reflectProb = 0f;
-            var dotDN = Vector3.Dot(rayIn.NormalizedDirection, record.Normal);
-            if ( dotDN > 0)
+            if (Vector3.Dot(rayIn.Direction, record.Normal) > 0)
             {
                 outwardNormal = -record.Normal;
                 eta = this.eta;
-                cosi = eta * dotDN;
+                cosi = eta * Vector3.Dot(rayIn.NormalizedDirection, record.Normal);
             }
             else
             {
                 outwardNormal = record.Normal;
                 eta = 1f / this.eta;
-                cosi = -dotDN;
+                cosi = -Vector3.Dot(rayIn.NormalizedDirection, record.Normal);
             }
 
             var refracted = Vector3.zero;
-            if (RayTraceUtility.Refract(rayIn.NormalizedDirection, outwardNormal, eta, ref refracted))
+            if (RayTraceUtility.Refract(rayIn.Direction, outwardNormal, eta, ref refracted))
             {
                 reflectProb = RayTraceUtility.Schlick(cosi, eta);
             }
@@ -44,7 +43,7 @@ namespace RayTrace
 
             if (Random.Range(0f, 1f) <= reflectProb)
             {
-                var reflected = RayTraceUtility.Reflect(rayIn.NormalizedDirection, record.Normal);
+                var reflected = RayTraceUtility.Reflect(rayIn.Direction, record.Normal);
                 scatteredRay = new Ray(record.Point, reflected);
             }
             else

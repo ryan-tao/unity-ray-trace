@@ -27,6 +27,7 @@ namespace RayTrace
 
         public static bool Refract(Vector3 vectorIn, Vector3 normal, float eta, ref Vector3 vectorOut)
         {
+            vectorIn = vectorIn.normalized;
             var idotn = Vector3.Dot(vectorIn, normal);
             var k = 1 - eta * eta * (1f - idotn * idotn);
             if (k < 0)
